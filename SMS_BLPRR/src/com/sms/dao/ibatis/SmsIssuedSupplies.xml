@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+<sqlMap namespace="SmsIssuedSupplies">
+
+	<typeAlias alias="IssuedSupplyClass" type="com.sms.entity.IssuedSupply"/>
+	
+	<resultMap id="getIssuedSuppliesMap" class="IssuedSupplyClass">
+		<result column="issue_id" 		property="issueId"/>
+		<result column="supply_id" 		property="supplyId"/>
+		<result column="issue_date" 	property="issueDate"/>
+		<result column="requestor" 		property="requestor"/>
+		<result column="quantity" 		property="quantity"/>
+		<result column="dept_id" 		property="deptId"/>
+		<result column="last_user" 		property="lastUser"/>
+		<result column="last_update" 	property="lastUpdate"/>
+	</resultMap>
+	
+	<select id="getIssuedSupplies" resultMap="getIssuedSuppliesMap" parameterClass="java.lang.String">
+		SELECT issue_id, supply_id, issue_date, requestor, quantity, dept_id, last_user, last_update
+		FROM   issued_supplies_blprr isb
+		WHERE  ( EXISTS( SELECT supply_id FROM supplies_blprr
+			  			 WHERE  supply_id = isb.supply_id 
+						 AND    LOWER(item_name) like '%$param$%' )
+		       OR issue_id like '%$param$%')
+	    AND    NOT EXISTS( SELECT supply_id FROM supplies_blprr
+			  			   WHERE  supply_id = isb.supply_id 
+						   AND    NVL(obsolete_tag, 'N') = 'Y' )
+		ORDER BY issue_id
+	</select>
+	
+	<insert id="insertIssuedSupply" parameterClass="java.util.Map">
+		INSERT INTO issued_supplies_blprr(supply_id, issue_date, requestor, quantity, dept_id, last_user, last_update)
+		VALUES(#supplyId#, #issueDate#, #requestor#, #quantity#, #deptId#, #lastUser#, #lastUpdate#)
+	</insert>
+	
+	<insert id="updateIssuedSupply" parameterClass="java.util.Map">
+		UPDATE issued_supplies_blprr
+		SET    supply_id = #supplyId#
+		     , issue_date = #issueDate#
+		     , requestor = #requestor#
+		     , quantity = #quantity#
+		     , dept_id = #deptId#
+		     , last_user = #lastUser#
+		     , last_update = #lastUpdate#
+		WHERE issue_id = #issueId#
+	</insert>
+	
+	
+</sqlMap>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+<sqlMap namespace="SmsDepartments">
+
+	<typeAlias alias="DepartmentClass" type="com.sms.entity.Department"/>
+	
+	<resultMap id="getDepartmentsMap" class="DepartmentClass">
+		<result column="dept_id" 		property="deptId"/>
+		<result column="dept_name" 		property="deptName"/>
+	</resultMap>
+
+	<select id="getDepartments" resultMap="getDepartmentsMap" parameterClass="java.lang.String">
+		SELECT dept_id, dept_name
+		FROM   departments_blprr d
+		WHERE  dept_id = NVL(TO_NUMBER(#deptId#), dept_id)
+	</select>
+</sqlMap>
