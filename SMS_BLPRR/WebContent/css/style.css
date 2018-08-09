@@ -1,0 +1,17 @@
+
+tr.selected {
+	background-color: #80ffff;
+}
+
+tr.unselected {
+	background-color: #c4ffc4;
+}
+
+tr.unselectedWMouse {
+	background-color: #ffff80;
+}
+table {
+	border-style: solid;
+	border-collapse: collapse;
+}
+

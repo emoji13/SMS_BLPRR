@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+<sqlMap namespace="Sup">
+
+	<typeAlias alias="SupplyClass" type="com.sms.entity.Supply"/>
+	
+	<resultMap id="getSupplyMap" class="SupplyClass">
+		<result column="supply_id" 		property="supplyID"/>
+		<result column="supply_type_id" 	property="supplyTypeID"/>
+		<result column="type_name" 		property="typeName"/>
+		<result column="item_name" 		property="itemName"/>
+		<result column="item_unit" 		property="itemUnit"/>
+		<result column="obsolete_tag" 	property="obsoleteTag"/>
+		<result column="location" 		property="location"/>
+		<result column="reorder_level" 		property="reorderLevel"/>
+		<result column="actual_count" 	property="actualCount"/>
+		<result column="remarks" 		property="remarks"/>
+		<result column="date_added" 		property="dateAdded"/>
+		<result column="last_user" 	property="lastUser"/>
+		<result column="last_update" 		property="lastUpdate"/>
+	</resultMap>
+	
+	<resultMap id="getSupplyTypesMap" class="SupplyClass">
+		<result column="supply_type_id" 	property="supplyTypeID"/>
+		<result column="type_name" 		property="typeName"/>
+	</resultMap>
+
+	<select id="getSupplies" parameterClass="java.lang.String" resultMap="getSupplyMap">
+		SELECT a.supply_id, a.supply_type_id, b.type_name, a.item_name, a.item_unit, a.obsolete_tag, a.location,
+			a.reorder_level, a.actual_count, a.remarks, a.date_added, a.last_user, a.last_update 
+		FROM supplies_blprr a, supply_types_blprr b
+		WHERE a.supply_type_id = b.supply_type_id
+		ORDER BY a.supply_id
+	</select>
+	
+	<select id="getSupplyTypes" resultMap="getSupplyTypesMap">
+		SELECT supply_type_id, type_name
+		FROM supply_types_blprr
+	</select>
+	
+	<select id="getSupplySearch" parameterClass="java.util.HashMap" resultMap="getSupplyMap">
+			SELECT a.supply_id, a.supply_type_id, b.type_name, a.item_name, a.item_unit, a.obsolete_tag, a.location,
+				a.reorder_level, a.actual_count, a.remarks, a.date_added, a.last_user, a.last_update 
+			FROM supplies_blprr a, supply_types_blprr b
+			WHERE a.supply_type_id = b.supply_type_id AND a.supply_id LIKE '%' || #searchKey# || '%'
+			ORDER BY a.supply_id
+	</select>
+	
+	<procedure id="insertSupply" parameterClass="java.util.Map">
+		BEGIN
+			INSERT INTO supplies_blprr (supply_type_id, item_name, item_unit, 
+				obsolete_tag, location,reorder_level, actual_count, remarks, date_added, 
+				last_user, last_update)
+			VALUES(#supplyTypeID#, #itemName#, #itemUnit#, #obsoleteTag#, #location#, 
+				#reorderLevel#, #actualCount#, #remarks#, SYSDATE, #lastUser#, SYSDATE);
+		END;
+	</procedure>
+	
+	<insert id="updateSupply" parameterClass="java.util.Map">
+		UPDATE supplies_blprr
+		SET item_name = #itemName#, item_unit = #itemUnit#, obsolete_tag = #obsoleteTag#, 
+			location = #location#, reorder_level = #reorderLevel#, remarks = #remarks#,
+			last_update = SYSDATE
+		WHERE supply_id = #supplyID#
+	</insert>
+</sqlMap>
