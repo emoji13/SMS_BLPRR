@@ -3,8 +3,8 @@ package com.sms.entity;
 import java.util.Date;
 
 public class Supply {
-	private String supplyID;
-	private String supplyTypeID;
+	private Long supplyID;
+	private Long supplyTypeID;
 	private String typeName;
 	private String itemName;
 	private String itemUnit;
@@ -16,16 +16,16 @@ public class Supply {
 	private Date dateAdded;
 	private String lastUser;
 	private Date lastUpdate;
-	public String getSupplyID() {
+	public Long getSupplyID() {
 		return supplyID;
 	}
-	public void setSupplyID(String supplyID) {
+	public void setSupplyID(Long supplyID) {
 		this.supplyID = supplyID;
 	}
-	public String getSupplyTypeID() {
+	public Long getSupplyTypeID() {
 		return supplyTypeID;
 	}
-	public void setSupplyTypeID(String supplyTypeID) {
+	public void setSupplyTypeID(Long supplyTypeID) {
 		this.supplyTypeID = supplyTypeID;
 	}
 	

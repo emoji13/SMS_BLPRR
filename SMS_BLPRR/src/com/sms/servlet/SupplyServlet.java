@@ -16,9 +16,6 @@ import com.sms.service.SupplyService;
 
 public class SupplyServlet extends HttpServlet{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1543774412315214249L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

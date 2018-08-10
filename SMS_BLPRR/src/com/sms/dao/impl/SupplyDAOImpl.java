@@ -54,28 +54,12 @@ public class SupplyDAOImpl implements SupplyDAO{
 	public List<Supply> searchSupply(String searchKey) throws SQLException {
 		List<Supply> listSupSearch = new ArrayList<>();
 		Map<String, Object> params = new HashMap<>();
-//		try{
-//			this.sqlMapClient.startTransaction();
-//			this.sqlMapClient.getCurrentConnection().setAutoCommit(false);
-//			this.sqlMapClient.startBatch();
-//			
-//			listSupSearch = this.getSqlMapClient().queryForList("getSupplySearch",searchKey);
-//			this.sqlMapClient.executeBatch();
-//			this.sqlMapClient.getCurrentConnection().commit();
-//		} catch(SQLException e){
-//			System.out.println(e.getMessage());
-//			this.getSqlMapClient().getCurrentConnection().rollback();
-//		} finally{
-//			this.sqlMapClient.endTransaction();
-//		}
 		try{
 			params.put("searchKey", searchKey);
 			listSupSearch = this.getSqlMapClient().queryForList("getSupplySearch",params);
 		} catch (SQLException e){
 			System.out.println(e.getMessage());
 		}
-		System.out.println("dao");
-		System.out.println(searchKey);
 		return listSupSearch;
 	}
 

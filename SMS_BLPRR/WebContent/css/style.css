@@ -4,14 +4,87 @@ tr.selected {
 }
 
 tr.unselected {
-	background-color: #c4ffc4;
+	background-color: #ceebf1;
 }
 
-tr.unselectedWMouse {
-	background-color: #ffff80;
+
+td.tdLabel {
+	text-align: right;
 }
-table {
+
+table.inputTable {
 	border-style: solid;
 	border-collapse: collapse;
+}
+.suppliesListHeaders {
+	background-color: #337ab7;
+	color:white;
+}
+select {
+	width: 100px;
+}
+#btnExecute {
+	background-color: #337ab7;
+	color:white;
+}
+#btnAdd {
+	background-color: #337ab7;
+	color:white;
+}
+#btnCancel {
+	background-color: #337ab7;
+	color:white;
+}
+
+#divTest {
+	height: 400px;
+	width: 100%;
+	overflow-y: auto; 
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+.modal-header-success {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+.modal-header-warning {
+    padding: 2px 16px;
+    background-color: #f0ad4e;
+    color: black;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+
+.closeModal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
