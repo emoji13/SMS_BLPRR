@@ -47,8 +47,9 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 	<bean class="com.sms.dao.impl.IssuedSuppliesDAOImpl" id="issuedSuppliesDAO" depends-on="issSuppSqlMapClient">
 		<property name="issSuppSqlMapClient" ref="issSuppSqlMapClient"></property>
 	</bean>
-	<bean class="com.sms.service.impl.IssuedSupplyServiceImpl" id="issuedSupplyService" depends-on="issuedSuppliesDAO">
+	<bean class="com.sms.service.impl.IssuedSupplyServiceImpl" id="issuedSupplyService" depends-on="issuedSuppliesDAO, supplyDAO">
 		<property name="issuedSuppliesDAO" ref="issuedSuppliesDAO"></property>
+		<property name="supplyDAO" ref="supplyDAO"></property>
 	</bean>
 	
 	<bean class="com.sms.dao.impl.DepartmentsDAOImpl" id="departmentsDAO" depends-on="deptSqlMapClient">
