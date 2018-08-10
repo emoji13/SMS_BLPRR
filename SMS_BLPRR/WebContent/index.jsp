@@ -56,9 +56,9 @@ $("btnLogin").observe("click", function(){
 				password: $F("txtPassword"),
 				activeTag: $F("idTag")
 			},
-			onComplete: function(response){				
-				if(response.status == 308){
-					window.location.assign(contextPath + "/home.jsp")
+			onComplete: function(response){
+				if(response.getHeader("status") == "success"){
+					window.location.assign(contextPath + "/home")
 				}else{
 					
 					$("test").update(response.responseText);

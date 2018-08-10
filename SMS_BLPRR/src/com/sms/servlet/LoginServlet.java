@@ -32,7 +32,13 @@ public class LoginServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String page = "";
 		HttpSession session = request.getSession();
+		String user = session.getAttribute("user") == null? "": (String) session.getAttribute("user");
+		String action = request.getParameter("action") == null? "": request.getParameter("action") ;
 		try {
+			if(!"".equals(user) && "".equals(action)){
+				page="home.jsp";
+				response.setHeader("status", "success");
+			} else{
 			ApplicationContext applicationContext = 
 					new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
 		
@@ -42,6 +48,7 @@ public class LoginServlet extends HttpServlet{
 			session.invalidate();
 			loginService.getLogin(request);
 			page = "index.jsp";
+			}
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
@@ -59,8 +66,8 @@ public class LoginServlet extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		
 		String page = "";
-		
 		try {
+			
 			ApplicationContext applicationContext = 
 					new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
 		
@@ -77,6 +84,7 @@ public class LoginServlet extends HttpServlet{
 						page = "home.jsp";
 						loginService.updateResetAttempts(request);
 						response.setStatus(308);
+						response.setHeader("status", "success");
 					}else{
 						out.println("<h4> " + session.getAttribute("message_locked_invalid") + "</h4>");
 						String action = request.getParameter("action") == null ? "" : request.getParameter("action");
@@ -96,6 +104,8 @@ public class LoginServlet extends HttpServlet{
 			}else{
 				out.println("<h4>No user found. Please register first.</h4>");
 			}
+		
+			
 
 		} catch (SQLException e) {
 			// TODO: handle exception

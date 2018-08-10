@@ -11,12 +11,13 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <script src="js/prototype.js"></script>
+<script>
+	var contextPath = "${pageContext.request.contextPath}"
+</script>
 </head>
 <jsp:include page="pages/header.jsp"></jsp:include>
 <body>
 	<h3>HOME</h3>
-	<br>
-	
 </body>
 <jsp:include page="pages/footer.jsp"></jsp:include>
 </html>
