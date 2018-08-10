@@ -45,5 +45,10 @@
 		WHERE issue_id = #issueId#
 	</insert>
 	
+	<insert id="updateSupplyActualCount" parameterClass="java.util.Map">
+		UPDATE supplies_blprr
+		SET    actual_count = actual_count - #quantity#
+		WHERE supply_id = #supplyId#
+	</insert>
 	
 </sqlMap>

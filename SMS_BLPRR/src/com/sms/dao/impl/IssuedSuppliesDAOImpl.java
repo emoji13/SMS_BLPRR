@@ -78,6 +78,26 @@ public class IssuedSuppliesDAOImpl implements IssuedSuppliesDAO{
 		}
 		
 	}
+
+	@Override
+	public void updateSupplyActualCount(Map<String, Object> params) throws SQLException {
+		try{
+			this.issSuppSqlMapClient.startTransaction();
+			this.issSuppSqlMapClient.getCurrentConnection().setAutoCommit(false);
+			this.issSuppSqlMapClient.startBatch();
+			
+			this.getIssSuppSqlMapClient().update("updateSupplyActualCount", params);
+			
+			this.issSuppSqlMapClient.executeBatch();
+			this.issSuppSqlMapClient.getCurrentConnection().commit();
+			LOGGER.info("Supply actual count have been updated.");
+		} catch(SQLException e){
+			LOGGER.error(e.getMessage());
+			this.issSuppSqlMapClient.getCurrentConnection().rollback();
+		} finally{
+			this.issSuppSqlMapClient.endTransaction();
+		}
+	}
 	
 	
 }

@@ -27,24 +27,27 @@ public class IssuedSupplyController extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = "";
+		
 		try {
-			@SuppressWarnings("resource")
-			ApplicationContext appContext = 
-						new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
-			
-			IssuedSupplyService issSuppService = (IssuedSupplyService) appContext.getBean("issuedSupplyService");
-			DepartmentService departmentService = (DepartmentService) appContext.getBean("departmentService");
-			SupplyService supplyService = (SupplyService) appContext.getBean("supplyService");
-			String action = request.getParameter("actionGet");
-			issSuppService.getIssuedSupplies(request);
-			departmentService.getDepartments(request);
-			supplyService.getSupplies(request);
-			if ("issueList".equals(action)){
-				page = "pages/issuelist.jsp";
-			} else{
-				page = "pages/issuedsupplies.jsp";
+			String user = (String) request.getSession().getAttribute("user") == null? "": (String) request.getSession().getAttribute("user");
+			if("".equals(user)){
+				@SuppressWarnings("resource")
+				ApplicationContext appContext = 
+							new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
+				
+				IssuedSupplyService issSuppService = (IssuedSupplyService) appContext.getBean("issuedSupplyService");
+				DepartmentService departmentService = (DepartmentService) appContext.getBean("departmentService");
+				SupplyService supplyService = (SupplyService) appContext.getBean("supplyService");
+				String action = request.getParameter("actionGet");
+				issSuppService.getIssuedSupplies(request);
+				departmentService.getDepartments(request);
+				supplyService.getSupplies(request);
+				if ("issueList".equals(action)){
+					page = "pages/issueList.jsp";
+				} else{
+					page = "pages/issueSupplies.jsp";
+				}
 			}
-			//System.out.println(page);
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
 		} finally {
@@ -58,16 +61,15 @@ public class IssuedSupplyController extends HttpServlet {
 		ApplicationContext appContext = 
 					new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
 		IssuedSupplyService issSuppService = (IssuedSupplyService) appContext.getBean("issuedSupplyService");
-		SupplyService supplyService = (SupplyService) appContext.getBean("supplyService");
 		String action= request.getParameter("actionPost")== null ? "": request.getParameter("actionPost");
 		try {
-			supplyService.getSupplies(request);
 			if("insert".equals(action)){
-				issSuppService.insertIssuedSupply(request);
+				issSuppService.insertIssuedSupply(request, response);
 			} else if ("update".equals(action)){
-				issSuppService.updateIssuedSupply(request);
+				issSuppService.updateIssuedSupply(request, response);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			LOGGER.error(e.getMessage());
 		} 
 	}

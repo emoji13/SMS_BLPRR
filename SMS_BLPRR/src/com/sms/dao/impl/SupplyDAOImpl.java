@@ -31,7 +31,7 @@ public class SupplyDAOImpl implements SupplyDAO{
 			listSup = this.getSqlMapClient().queryForList("getSupplies");
 		} catch (SQLException e){
 			System.out.println(e.getMessage());
-		}
+		} 
 		
 		return listSup;
 	}

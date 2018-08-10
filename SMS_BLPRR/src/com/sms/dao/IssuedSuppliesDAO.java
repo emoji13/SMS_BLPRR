@@ -10,4 +10,5 @@ public interface IssuedSuppliesDAO {
 	List<IssuedSupply> getIssuedSupplies(String param);
 	void insertIssuedSupply(Map<String, Object> params) throws SQLException;
 	void updateIssuedSupply(Map<String, Object> params) throws SQLException;
+	void updateSupplyActualCount(Map<String, Object> params) throws SQLException;
 }
