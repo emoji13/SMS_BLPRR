@@ -7,7 +7,7 @@
           <ul class="nav navbar-nav">
             <li id="homeHeader"><a href="#home" >Home<span class="glyphicon glyphicon-home" aria-hidden="true" style="margin-left: 5px;"></span></a></li>
             <li id="maintenanceHeader"><a href="#maintenance">Maintenance<span class="glyphicon glyphicon-wrench" aria-hidden="true" style="margin-left: 5px;"></span></a></li>
-            <li id="suppliesHeader"><a href="#issuesupplies">Issue Supplies<span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-left: 5px;"></span></a></li>
+            <li id="suppliesHeader"><a href="issueSupplies">Issue Supplies<span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="margin-left: 5px;"></span></a></li>
             <li id="stocksHeader"><a href="supplystock">Add Stocks<span class="glyphicon glyphicon-folder-close" aria-hidden= "true" style="margin-left: 5px;"></span></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">

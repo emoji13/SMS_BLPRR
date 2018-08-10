@@ -16,6 +16,7 @@
  <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div id="mainContents">
 <br><br>
 <div class="col-md-1"></div>
@@ -287,7 +288,7 @@
   </div>
   
 </div>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 <script>
