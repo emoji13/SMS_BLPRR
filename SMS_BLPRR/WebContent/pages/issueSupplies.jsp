@@ -135,6 +135,7 @@
 </body>
 <script src="js/issueSupplies.js"></script>
 <script>
+$("suppliesHeader").addClassName("active");
 loadIssueList();
 </script>
 </html>

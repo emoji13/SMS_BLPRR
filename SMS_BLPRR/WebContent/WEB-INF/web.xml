@@ -42,4 +42,25 @@
   	<servlet-name>issueSupplies</servlet-name>
   	<url-pattern>/issueSupplies</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>supplystock</servlet-name>
+  	<servlet-class>com.sms.servlet.SupplyStockServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>supplystock</servlet-name>
+  	<url-pattern>/supplystock</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>supplystock</servlet-name>
+  	<url-pattern>/searchSupplyStock</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>supplystock</servlet-name>
+  	<url-pattern>/saveSupplyStock</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>supplystock</servlet-name>
+  	<url-pattern>/updateSupplyStock</url-pattern>
+  </servlet-mapping>
 </web-app>

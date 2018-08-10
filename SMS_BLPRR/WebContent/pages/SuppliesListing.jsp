@@ -16,12 +16,13 @@
 <!-- <script src="js/bootstrap.min.js"></script> -->
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <br>
 <div id="mainContents">
 <div id="divOutsideSupplyTable">
 
 <div class="col-md-1"></div>
-<div class="col-md-10">
+<div class="col-md-10" style="padding-top:50px;">
 	<div class="panel panel-primary">
   		<div class="panel-heading">
     	<h3 class="panel-title"><strong>Supply Viewer</strong></h3>
@@ -291,6 +292,7 @@
   
 </div>
 
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 <script>

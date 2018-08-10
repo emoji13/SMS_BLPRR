@@ -142,13 +142,12 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<div class="col-md-1"></div>
 		</div>
 		<!-- for add div -->
-		<div id="addSupplyStock">
+		<div id="addSupplyStock" style="padding-top:60px;">
 			<div class="col-md-1"></div>
 			<div class="col-md-10">
 				<div class="panel panel-primary">
@@ -198,7 +197,7 @@
 			<div class="col-md-1"></div>
 		</div>
 		<!-- for update div -->
-		<div id="updateSupplyStock">
+		<div id="updateSupplyStock" style="padding-top:60px;">
 			<div class="col-md-1"></div>
 			<div class="col-md-10">
 				<div class="panel panel-primary">
@@ -291,7 +290,6 @@
 	$("btnAddSave").observe("click",function() {
 
 		    var supplyNameID = $F("addSupplyName");
-			var supplyName = $("addName" + supplyNameID).innerHTML;
 			var quantity = $F("addQuantity");
 			var referenceNumber = $F("addReferenceNumber");
 			var dateAdded = $F("addDateAdded");
@@ -301,6 +299,9 @@
 						
 			if (!(/^\d+$/.test(quantity))) {
 				$("alertMessageAdd").innerHTML = "Please enter a valid quantity.";
+				$("alertErrorAdd").show();
+			} else if (supplyNameID == null) {
+				$("alertMessageAdd").innerHTML = "Please choose an item.";
 				$("alertErrorAdd").show();
 			} else if (quantity < 1) {
 				$("alertMessageAdd").innerHTML = "Zero or Negative numbers are not allowed";
@@ -321,6 +322,7 @@
 				$("alertMessageAdd").innerHTML = "Please follow the date format or enter a valid date.";
 				$("alertErrorAdd").show();
 			} else {
+				var supplyName = $("addName" + supplyNameID).innerHTML;
 				addObj.supplyID = supplyNameID;
 				addObj.quantity = quantity;
 				addObj.referenceNumber = referenceNumber;
