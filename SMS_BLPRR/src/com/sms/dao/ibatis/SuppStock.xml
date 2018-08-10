@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+<sqlMap namespace="SuppStock">
+	<typeAlias alias="SupplyStockClass" type="com.sms.entity.SupplyStock"/>
+	
+	<resultMap id="getSupplyStockMap" class="SupplyStockClass">
+		<result column="stock_id" 		property="stockID"/>
+		<result column="supply_name" 	property="supplyName"/>
+		<result column="supply_id" 	property="supplyID"/>
+		<result column="date_added" 		property="dateAdded"/>
+		<result column="purchase_date" 	property="purchaseDate"/>
+		<result column="reference_no" 		property="referenceNumber"/>
+		<result column="quantity" 		property="quantity"/>
+		<result column="last_user" 	property="lastUser"/>
+		<result column="last_update" 		property="lastUpdate"/>
+	</resultMap>
+	
+	<select id="getSupplyStock" resultMap="getSupplyStockMap">
+		 SELECT stock_id, s.item_name supply_name, ss.supply_id, TO_CHAR(ss.date_added, 'dd/mm/yyyy') date_added, TO_CHAR(purchase_date, 'dd/mm/yyyy') purchase_date, reference_no, quantity, ss.last_user, TO_CHAR(ss.last_update, 'dd/mm/yyyy') last_update 
+		 FROM supplies_stocks_blprr ss, supplies_blprr s
+		 WHERE ss.supply_id = s.supply_id ORDER BY stock_id 
+	</select>
+	
+	<select id="searchSupplyStock" resultMap="getSupplyStockMap" parameterClass="java.util.HashMap">
+		 SELECT stock_id, s.item_name supply_name, ss.supply_id, TO_CHAR(ss.date_added, 'mm/dd/yyyy') date_added, TO_CHAR(purchase_date, 'mm/dd/yyyy') purchase_date, reference_no, quantity, ss.last_user, TO_CHAR(ss.last_update, 'mm/dd/yyyy') last_update 
+		 FROM supplies_stocks_blprr ss, supplies_blprr s
+		 WHERE ss.supply_id = s.supply_id AND (stock_id LIKE '%' || nvl(#search#, stock_id) || '%' OR s.item_name LIKE '%' || nvl(#search#, s.item_name) || '%') ORDER BY stock_id 
+	</select>
+	
+	<typeAlias alias="SupplyClass" type="com.sms.entity.Supply"/>
+	
+	<resultMap id="getSupplyNamesMap" class="SupplyClass">
+		<result column="supply_id" 		property="supplyID"/>
+		<result column="item_name" 		property="itemName"/>
+		<result column="actual_count" 		property="actualCount"/>
+	</resultMap>
+	
+	<select id="getSupplyNames" resultMap="getSupplyNamesMap">
+		SELECT supply_id, item_name, actual_count FROM supplies_blprr WHERE obsolete_tag = 'N' ORDER BY supply_id
+	</select>
+	
+	<select id="getAllSupplyNames" resultMap="getSupplyNamesMap">
+		SELECT supply_id, item_name, actual_count FROM supplies_blprr ORDER BY supply_id
+	</select>
+	
+	<insert id="insertSupplyStock" parameterClass="java.util.Map">
+		INSERT INTO supplies_stocks_blprr (stock_id, supply_id, date_added, purchase_date, reference_no, quantity, last_user, last_update)
+		VALUES (supp_suppstocks_seq.NEXTVAL, #supplyID#, TO_DATE(#dateAdded#, 'dd/mm/yyyy'), TO_DATE(#purchaseDate#, 'dd/mm/yyyy'), #referenceNumber#, #quantity#, #lastUpdateBy#, TO_DATE(#lastUpdate#, 'dd/mm/yyyy'))	
+	</insert>
+	
+	<insert id="updateAddedStock" parameterClass="java.util.Map">
+		UPDATE supplies_blprr
+		SET actual_count = actual_count + TO_NUMBER(#quantity#)
+		WHERE  supply_id = #supplyID#
+	</insert>
+	
+	<insert id="updateStockQuantity" parameterClass="java.util.Map">
+		UPDATE supplies_blprr
+		SET actual_count = #newQuantity#
+		WHERE  supply_id = #supplyID#
+	</insert>
+	
+	<insert id="updateSupplyStock" parameterClass="java.util.Map">
+		UPDATE supplies_stocks_blprr
+		SET purchase_date = TO_DATE(#purchaseDate#, 'dd/mm/yyyy'),
+		reference_no = #referenceNumber#,
+		quantity = #quantity#,
+		last_user = #lastUpdateBy#,
+		last_update = TO_DATE(#lastUpdate#, 'dd/mm/yyyy')
+		WHERE stock_id = #stockID#
+	</insert>
+	
+	
+	
+</sqlMap>

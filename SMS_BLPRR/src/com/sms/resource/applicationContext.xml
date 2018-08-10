@@ -15,6 +15,20 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 		</property>
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
+	
+	<bean class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" id="issSuppSqlMapClient" >
+		<property name="configLocation">
+			<value>/com/sms/resource/issSuppSqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" id="deptSqlMapClient" >
+		<property name="configLocation">
+			<value>/com/sms/resource/deptSqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
@@ -28,5 +42,20 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 	</bean>
 	<bean class="com.sms.service.impl.SupplyServiceImpl" id="supplyService" depends-on="supplyDAO">
 		<property name="supplyDAO" ref="supplyDAO"></property>
+	</bean>
+	
+	<bean class="com.sms.dao.impl.IssuedSuppliesDAOImpl" id="issuedSuppliesDAO" depends-on="issSuppSqlMapClient">
+		<property name="issSuppSqlMapClient" ref="issSuppSqlMapClient"></property>
+	</bean>
+	<bean class="com.sms.service.impl.IssuedSupplyServiceImpl" id="issuedSupplyService" depends-on="issuedSuppliesDAO, supplyDAO">
+		<property name="issuedSuppliesDAO" ref="issuedSuppliesDAO"></property>
+		<property name="supplyDAO" ref="supplyDAO"></property>
+	</bean>
+	
+	<bean class="com.sms.dao.impl.DepartmentsDAOImpl" id="departmentsDAO" depends-on="deptSqlMapClient">
+		<property name="deptSqlMapClient" ref="deptSqlMapClient"></property>
+	</bean>
+	<bean class="com.sms.service.impl.DepartmentServiceImpl" id="departmentService" depends-on="departmentsDAO">
+		<property name="departmentsDAO" ref="departmentsDAO"></property>
 	</bean>
 </beans>

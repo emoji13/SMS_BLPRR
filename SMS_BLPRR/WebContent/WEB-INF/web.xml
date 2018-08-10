@@ -11,10 +11,6 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>supplycontrol</servlet-name>
-  	<url-pattern></url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>supplycontrol</servlet-name>
   	<url-pattern>/supplylistings</url-pattern>
   </servlet-mapping>
   
@@ -36,5 +32,14 @@
   <servlet-mapping>
   	<servlet-name>supplycontrol</servlet-name>
   	<url-pattern>/searchsupplies</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>issueSupplies</servlet-name>
+  	<servlet-class>com.sms.servlet.IssuedSupplyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>issueSupplies</servlet-name>
+  	<url-pattern>/issueSupplies</url-pattern>
   </servlet-mapping>
 </web-app>
