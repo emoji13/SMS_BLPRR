@@ -30,7 +30,7 @@ public class IssuedSupplyController extends HttpServlet {
 		
 		try {
 			String user = (String) request.getSession().getAttribute("user") == null? "": (String) request.getSession().getAttribute("user");
-			if("".equals(user)){
+			if(!"".equals(user)){
 				@SuppressWarnings("resource")
 				ApplicationContext appContext = 
 							new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");

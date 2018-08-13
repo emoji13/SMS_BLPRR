@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+<sqlMap namespace="Log">
+
+	<typeAlias alias="LoginClass" type="com.sms.entity.Login"/>
+	
+	<resultMap id="getLoginMap" class="LoginClass">
+		<result column="user_id" 		property="username"/>
+		<result column="password" 		property="password"/>
+		<result column="first_name" 	property="firstName"/>
+		<result column="last_name" 		property="lastName"/>
+		<result column="middle_initial" property="middleInitial"/>
+		<result column="email" 			property="email"/>
+		<result column="active_tag" 	property="activeTag"/>
+		<result column="access_level" 	property="accessLevel"/>
+		<result column="entry_date" 	property="entryDate"/>
+		<result column="last_login" 	property="lastLogin"/>
+		<result column="last_user" 		property="lastUser"/>
+		<result column="last_update" 	property="lastUpdate"/>
+		<result column="attempts" 		property="attempts"/>
+	</resultMap>
+	
+	<select id="getLogin" resultMap="getLoginMap">
+		SELECT user_id, password,first_name,last_name,middle_initial,email, active_tag, access_level, entry_date, last_login,last_user,last_update, attempts 
+		FROM SMS_USERS_BLPRR
+	</select>
+	
+	<insert id="updateLogin" parameterClass="java.util.Map">
+		UPDATE SMS_USERS_BLPRR
+		SET active_tag = #activeTag#
+		WHERE user_id = #username#
+	</insert>
+	
+	<insert id="updateAttempts" parameterClass="java.util.Map">
+		UPDATE SMS_USERS_BLPRR
+		SET attempts = (SELECT attempts + 1 FROM SMS_USERS_BLPRR WHERE user_id = #username#) 
+		WHERE user_id = #username#
+	</insert>
+	
+	<insert id="updateResetAttempts" parameterClass="java.util.Map">
+		UPDATE SMS_USERS_BLPRR
+		SET attempts = 0
+		WHERE user_id = #username#
+	</insert>
+	
+	<insert id="updateResetAllAttempts" parameterClass="java.util.Map">
+		UPDATE SMS_USERS_BLPRR
+		SET attempts = 0
+	</insert>
+</sqlMap>
