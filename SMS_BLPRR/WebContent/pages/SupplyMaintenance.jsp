@@ -502,6 +502,7 @@
 	}
 
 	function saveRecord() {
+		var user = session.getAttribute("user") == null? "wat": (String) session.getAttribute("user");
 		new Ajax.Request(contextPath + "/addsupplies", {
 			method : "POST",
 			parameters : {
@@ -514,7 +515,8 @@
 				reorderLevel : addObj.reorderLevel,
 				actualCount : addObj.actualCount,
 				remarks : addObj.remarks,
-				lastUser : 'ako hihi',
+				lastUser : user
+				
 			},
 			onComplete : function(response) {
 				$("myModalAddSuccess").style.display = "block";

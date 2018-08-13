@@ -16,6 +16,13 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
+	<bean class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" id="loginSqlMapClient" >
+		<property name="configLocation">
+			<value>/com/sms/resource/loginSqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
 	<bean class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" id="issSuppSqlMapClient" >
 		<property name="configLocation">
 			<value>/com/sms/resource/issSuppSqlMapConfig.xml</value>
@@ -57,5 +64,12 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 	</bean>
 	<bean class="com.sms.service.impl.DepartmentServiceImpl" id="departmentService" depends-on="departmentsDAO">
 		<property name="departmentsDAO" ref="departmentsDAO"></property>
+	</bean>
+	
+	<bean class="com.sms.dao.impl.LoginDAOImpl" id="loginDAO" depends-on="loginSqlMapClient">
+		<property name="loginSqlMapClient" ref="loginSqlMapClient"></property>
+	</bean>
+	<bean class="com.sms.service.impl.LoginServiceImpl" id="loginService" depends-on="loginDAO">
+		<property name="loginDAO" ref="loginDAO"></property>
 	</bean>
 </beans>
