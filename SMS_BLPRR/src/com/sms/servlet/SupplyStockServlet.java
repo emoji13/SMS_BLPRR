@@ -21,9 +21,8 @@ public class SupplyStockServlet extends HttpServlet {
 		String page = "";
 		try{
 			String loginStatus = (String) request.getSession().getAttribute("loginStatus") == null? "": (String) request.getSession().getAttribute("loginStatus");
-			String loginStatusUser = (String) request.getSession().getAttribute("access") == null? "": (String) request.getSession().getAttribute("access");
 			
-			if(!"".equals(loginStatus) && loginStatusUser.equals("A")){
+			if(!"".equals(loginStatus)){
 			ApplicationContext applicationContext = 
 					new ClassPathXmlApplicationContext("/com/sms/resource/applicationContextSupplyStock.xml");
 			

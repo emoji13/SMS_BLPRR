@@ -1,3 +1,6 @@
+input {
+	cursor:default;
+}
 
 tr.selected {
 	background-color: #80ffff;
@@ -14,6 +17,9 @@ td.tdLabel {
 table.inputTable {
 	border-style: solid;
 	border-collapse: collapse;
+}
+textarea {
+    resize: none;
 }
 .suppliesListHeaders {
 	background-color: #337ab7;
@@ -35,7 +41,7 @@ select {
 	color:white;
 }
 
-#divTest {
+#divSuppliesList {
 	height: 400px;
 	width: 100%;
 	overflow-y: auto; 

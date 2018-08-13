@@ -39,20 +39,21 @@ public class LoginServlet extends HttpServlet{
 				page="home.jsp";
 				response.setHeader("status", "success");
 			} else{
-			ApplicationContext applicationContext = 
-					new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
-		
-			LoginService loginService = (LoginService) applicationContext.getBean("loginService");
-		
-			loginService.updateResetAllAttempts();
-			if(!(session==null || !request.isRequestedSessionIdValid() )){
-				session.invalidate();
+				ApplicationContext applicationContext = 
+						new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
+			
+				LoginService loginService = (LoginService) applicationContext.getBean("loginService");
+			
+				loginService.updateResetAllAttempts();
+				if(!"".equals(loginStatus)){
+					session.invalidate();
+				}
+				loginService.getLogin(request);
+				page = "index.jsp";
 			}
-			loginService.getLogin(request);
-			page = "index.jsp";
-			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}finally{
 			RequestDispatcher rd = request.getRequestDispatcher(page);

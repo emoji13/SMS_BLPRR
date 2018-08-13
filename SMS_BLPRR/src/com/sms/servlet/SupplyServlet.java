@@ -19,8 +19,11 @@ public class SupplyServlet extends HttpServlet{
 	private static final long serialVersionUID = -1543774412315214249L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String page = "pages/SuppliesListing.jsp";
+		String page = "";
 		try{
+			String loginStatus = (String) request.getSession().getAttribute("loginStatus") == null? "": (String) request.getSession().getAttribute("loginStatus");
+			if(!"".equals(loginStatus)){
+			@SuppressWarnings("resource")
 			ApplicationContext applicationContext = 
 					new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
 			
@@ -46,6 +49,7 @@ public class SupplyServlet extends HttpServlet{
 			else {
 				page = "pages/SuppliesListing.jsp";
 			}
+		}
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		} finally {

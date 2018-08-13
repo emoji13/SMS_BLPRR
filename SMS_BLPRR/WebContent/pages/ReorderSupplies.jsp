@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<title>Supplies System Management - Supplies Stocks - Reorder
-	Supplies</title>
+<title>Supplies Management System - Supplies Stocks - Add
+	Stocks</title>
 <script src="js/prototype.js"></script>
 <script>
 	var contextPath = "${pageContext.request.contextPath}"
