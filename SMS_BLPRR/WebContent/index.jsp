@@ -18,8 +18,9 @@
 </script>
 </head>
 <body  style=" padding-top: 60px;">
-	<div id="test" align="center" class="container" style="width: 400px; " >
+	<div id="test" align="center" class="container" style="width: 400px; " ></div>
 	<br>
+	<div align="center" class="container" style="width: 400px; " >
 	<form >
 		<h2 class="text-center">Sign In</h2> <br>
 		<div class="form-group has-error">
@@ -60,7 +61,6 @@ $("btnLogin").observe("click", function(){
 				if(response.getHeader("status") == "success"){
 					window.location.assign(contextPath + "/home")
 				}else{
-					
 					$("test").update(response.responseText);
 				}
 			}

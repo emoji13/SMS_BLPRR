@@ -32,10 +32,10 @@ public class LoginServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String page = "";
 		HttpSession session = request.getSession();
-		String user = session.getAttribute("user") == null? "": (String) session.getAttribute("user");
+		String loginStatus = session.getAttribute("loginStatus") == null? "": (String) session.getAttribute("loginStatus");
 		String action = request.getParameter("action") == null? "": request.getParameter("action") ;
 		try {
-			if(!"".equals(user) && "".equals(action)){
+			if(!"".equals(loginStatus) && "".equals(action)){
 				page="home.jsp";
 				response.setHeader("status", "success");
 			} else{
@@ -45,7 +45,9 @@ public class LoginServlet extends HttpServlet{
 			LoginService loginService = (LoginService) applicationContext.getBean("loginService");
 		
 			loginService.updateResetAllAttempts();
-			session.invalidate();
+			if(!(session==null || !request.isRequestedSessionIdValid() )){
+				session.invalidate();
+			}
 			loginService.getLogin(request);
 			page = "index.jsp";
 			}
@@ -76,17 +78,18 @@ public class LoginServlet extends HttpServlet{
 
 			if(session.getAttribute("count_user").equals(1)){
 				if(session.getAttribute("tag").equals("N") || session.getAttribute("tag").equals("n")){
-					out.print("<h4>Unfortunately, you are not allowed to access the system."
-							+ " Please contact the Administrator</h4>");
+					request.setAttribute("loginText", "Unfortunately, you are not allowed to access the system."
+							+ " Please contact the Administrator");
+					page = "pages/login.jsp";
 					session.invalidate();
 				}else{
 					if(message.equals("SUCCESS")){
 						page = "home.jsp";
 						loginService.updateResetAttempts(request);
-						response.setStatus(308);
 						response.setHeader("status", "success");
 					}else{
-						out.println("<h4> " + session.getAttribute("message_locked_invalid") + "</h4>");
+						page = "pages/login.jsp";
+						request.setAttribute("loginText", session.getAttribute("message_locked_invalid"));
 						String action = request.getParameter("action") == null ? "" : request.getParameter("action");
 						
 						if(session.getAttribute("message2").equals("LOCKED")){
@@ -102,7 +105,9 @@ public class LoginServlet extends HttpServlet{
 				}
 				
 			}else{
-				out.println("<h4>No user found. Please register first.</h4>");
+			   page = "pages/login.jsp";
+			   request.setAttribute("loginText", "No user found. Please register first.");
+			   
 			}
 		
 			

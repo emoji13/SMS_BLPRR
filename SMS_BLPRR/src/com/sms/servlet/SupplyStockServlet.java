@@ -20,6 +20,10 @@ public class SupplyStockServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String page = "";
 		try{
+			String loginStatus = (String) request.getSession().getAttribute("loginStatus") == null? "": (String) request.getSession().getAttribute("loginStatus");
+			String loginStatusUser = (String) request.getSession().getAttribute("access") == null? "": (String) request.getSession().getAttribute("access");
+			
+			if(!"".equals(loginStatus) && loginStatusUser.equals("A")){
 			ApplicationContext applicationContext = 
 					new ClassPathXmlApplicationContext("/com/sms/resource/applicationContextSupplyStock.xml");
 			
@@ -28,7 +32,7 @@ public class SupplyStockServlet extends HttpServlet {
 			
 			supplyStockService.getSupplyStock(request);
 			supplyStockService.getSupplyNames(request);
-			page = "pages/ReorderSupplies.jsp";
+			page = "pages/ReorderSupplies.jsp"; }
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		} finally {
