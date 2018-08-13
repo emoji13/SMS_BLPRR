@@ -36,6 +36,13 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 		</property>
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
+	
+	<bean class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" id="userSqlMapClient" >
+		<property name="configLocation">
+			<value>/com/sms/resource/userSqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
@@ -71,5 +78,11 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 	</bean>
 	<bean class="com.sms.service.impl.LoginServiceImpl" id="loginService" depends-on="loginDAO">
 		<property name="loginDAO" ref="loginDAO"></property>
+	</bean>
+	<bean class="com.sms.dao.impl.UserDAOImpl" id="userDAO" depends-on="userSqlMapClient">
+		<property name="userSqlMapClient" ref="userSqlMapClient"></property>
+	</bean>
+	<bean class="com.sms.service.impl.UserServiceImpl" id="userService" depends-on="userDAO">
+		<property name="userDAO" ref="userDAO"></property>
 	</bean>
 </beans>

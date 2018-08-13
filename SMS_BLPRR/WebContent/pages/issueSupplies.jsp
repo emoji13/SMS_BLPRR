@@ -10,6 +10,9 @@
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/> 
 <link href="css/issueSupplyStyle.css" type="text/css" rel="stylesheet"/> 
 
+<script src="js/prototype.js"></script>
+<script>var contextPath = "${pageContext.request.contextPath}"</script>
+<script src="js/issueSupplies.js"></script>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -132,9 +135,6 @@
 	</div>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
-<script src="js/prototype.js"></script>
-<script>var contextPath = "${pageContext.request.contextPath}"</script>
-<script src="js/issueSupplies.js"></script>
 <script>
 $("suppliesHeader").addClassName("active");
 loadIssueList();

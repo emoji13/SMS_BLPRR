@@ -71,7 +71,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>supplystock</servlet-name>
-  	<url-pattern>/searchsupplystock</url-pattern>
+  	<url-pattern>/searchSupplyStock</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>supplystock</servlet-name>
@@ -80,5 +80,61 @@
   <servlet-mapping>
   	<servlet-name>supplystock</servlet-name>
   	<url-pattern>/updateSupplyStock</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>admin</servlet-name>
+  	<servlet-class>com.sms.servlet.AdminUser</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>admin</servlet-name>
+  	<url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>admin</servlet-name>
+  	<url-pattern>/searchRecord</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>admin</servlet-name>
+  	<url-pattern>/insertRecord</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>admin</servlet-name>
+  	<url-pattern>/updateRecord</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>admin</servlet-name>
+  	<url-pattern>/updateAdminLogDate</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>user</servlet-name>
+  	<servlet-class>com.sms.servlet.UserUser</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>user</servlet-name>
+  	<url-pattern>/user</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>user</servlet-name>
+  	<url-pattern>/updateProfile</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>user</servlet-name>
+  	<url-pattern>/updatePassword</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>user</servlet-name>
+  	<url-pattern>/updateUserLogDate</url-pattern>
   </servlet-mapping>
 </web-app>

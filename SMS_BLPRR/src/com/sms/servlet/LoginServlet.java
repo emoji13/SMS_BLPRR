@@ -110,8 +110,6 @@ public class LoginServlet extends HttpServlet{
 			   request.setAttribute("loginText", "No user found. Please register first.");
 			   
 			}
-		
-			
 
 		} catch (SQLException e) {
 			// TODO: handle exception
