@@ -17,6 +17,7 @@
 	var contextPath = "${pageContext.request.contextPath}"
 </script>
 </head>
+<jsp:include page="pages/loginHeader.jsp"></jsp:include>
 <body  style=" padding-top: 60px;">
 	<div id="test" align="center" class="container" style="width: 400px; " ></div>
 	<br>
@@ -44,6 +45,7 @@
 	</div>
 
 </body>
+<jsp:include page="pages/footer.jsp"></jsp:include>
 <script>
 $("btnLogin").observe("click", function(){
 	updateRecord();
@@ -61,6 +63,9 @@ $("btnLogin").observe("click", function(){
 				if(response.getHeader("status") == "success"){
 					window.location.assign(contextPath + "/home")
 				}else{
+					$("txtPassword").value = "";
+					
+					$("txtUsername").value = "";
 					$("test").update(response.responseText);
 				}
 			}

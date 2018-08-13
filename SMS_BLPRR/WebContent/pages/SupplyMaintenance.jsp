@@ -32,7 +32,7 @@
 			</div>
 			<div class="col-md-8">
 				<div class="input-group input-group-sm">
-  					<input type="text" id="txtSupplyID" class="form-control" value="${supplyID}" aria-describedby="basic-addon1" size="35px">
+  					<input type="text" id="txtSupplyID" class="form-control" value="${supplyID}" aria-describedby="basic-addon1" size="20px">
 				</div>
 			</div>
 		</div>
@@ -43,10 +43,10 @@
 		<div class="col-md-6">
 
 			<div class="col-md-4">
-				Supply Type
+				Supply Type *
 			</div>
 				<div class="col-md-8">
-				<select class="form-control" id="selSupplyTypeID" style="width:200px; display:block;">
+				<select class="form-control" id="selSupplyTypeID" style="width:300px; display:block;">
 						<c:forEach var="supType" items="${supTypesList}">
 							<option value="${supType.supplyTypeID}">${supType.typeName}</option>
 						</c:forEach>
@@ -59,51 +59,51 @@
 		<div class="col-md-12"> </div>
 		<div class="col-md-6">
 			<div class="col-md-4">
-				Item Name
+				Item Name *
 			</div>
 			<div class="col-md-8">
 				<div class="input-group input-group-sm">
-  					<input type="text" id="txtItemName" class="form-control" value="${itemName}" aria-describedby="basic-addon1" size="35px">
+  					<input type="text" id="txtItemName" class="form-control" value="${itemName}" aria-describedby="basic-addon1" size="52px">
 				</div>
 			</div>
 
 		</div>
 		<div class="col-md-6">
-			<div class="col-md-5">
-				Reorder Level
+			<div class="col-md-4">
+				Reorder Level *
 			</div>
-			<div class="col-md-7">
+			<div class="col-md-8">
 				<div class="input-group input-group-sm">
-  					<input type="text" id="txtReorderLevel" value="${reorderLevel}" class="form-control" aria-describedby="basic-addon1" size="35px">
+  					<input type="text" id="txtReorderLevel" value="${reorderLevel}" class="form-control" aria-describedby="basic-addon1" size="20px">
 				</div>
 			</div>
 		</div>
 		<div class="col-md-12"> </div>
 		<div class="col-md-6">
 			<div class="col-md-4">
-				Item Unit
+				Item Unit *
 			</div>
 			<div class="col-md-8">
 				<div class="input-group input-group-sm">
-  					<input type="text" id="txtItemUnit" class="form-control" value="${itemUnit}" aria-describedby="basic-addon1" size="35px">
+  					<input type="text" id="txtItemUnit" class="form-control" value="${itemUnit}" aria-describedby="basic-addon1" size="52px">
 				</div>
 			</div>
 
 		</div>
 		<div class="col-md-6">
-			<div class="col-md-5">
-				Actual Count
+			<div class="col-md-4">
+				Actual Count *
 			</div>
-			<div class="col-md-7">
+			<div class="col-md-8">
 				<div class="input-group input-group-sm">
-  					<input type="text" id="txtActualCount" class="form-control" value="${actualCount}" aria-describedby="basic-addon1" size="35px">
+  					<input type="text" id="txtActualCount" class="form-control" value="${actualCount}" aria-describedby="basic-addon1" size="20px">
 				</div>
 			</div>
 		</div>
 		<div class="col-md-12"> </div>
 		<div class="col-md-6">
 			<div class="col-md-4">
-			Obsolete Tag
+			Obsolete Tag *
    			 </div>
 			
 			<div class="col-md-4">
@@ -130,7 +130,7 @@
 			</div>
 			<div class="col-md-8">
 				<div class="input-group input-group-sm">
-  					<input type="text" id="txtLocation" class="form-control" value="${location}" aria-describedby="basic-addon1" size="35px">
+  					<input type="text" id="txtLocation" class="form-control" value="${location}" aria-describedby="basic-addon1" size="52px">
 				</div>
 			</div>
 		</div>
@@ -162,70 +162,7 @@
 	</div>
 </div>
 <div class="col-md-1"></div>
-<br>
-<%-- <table align="center" class="inputTable">
-
-	<tr id="supplyIDRow">
-		<td class="tdLabel"><label>Supply ID</label></td>
-		<td width="10px"></td>
-		<td width="220px"><input type="text" id="txtSupplyID" value="${supplyID}" size="30px"></td>
-		<td width="100px"></td>
-	</tr>
-	<tr>
-		<td class="tdLabel"><label>Supply Type Name</label></td>
-		<td width="10px"></td>
-		<td width="220px"><select id="selSupplyTypeID" style="width:200px; display:block;">
-			<c:forEach var="supType" items="${supTypesList}">
-				<option value="${supType.supplyTypeID}">${supType.typeName}</option>		
-			</c:forEach>
-			</select>
-		</td>
-		<td width="100px"></td>
-		<td class="tdLabel"><label>Reorder Level</label></td>
-		<td width="10px"></td>
-		<td><input type="text" id="txtReorderLevel" value="${reorderLevel}" size="30px"></td>
-	</tr>
-	<tr>
-		<td class="tdLabel"><label>Item Name</label></td>
-		<td width="10px"></td>
-		<td><input type="text" id="txtItemName" value="${itemName}" size="30px"></td>
-		<td width="100px"></td>
-		<td class="tdLabel"><label>Actual Count</label></td>
-		<td width="10px"></td>
-		<td><input type="text" id="txtActualCount" value="${actualCount}" size="30px"></td>
-	</tr>
-	<tr>
-		<td class="tdLabel"><label>Item Unit</label></td>
-		<td width="10px"></td>
-		<td><input type="text" id="txtItemUnit" value="${itemUnit}" size="30px"></td>
-		<td width="100px"></td>
-		<td class="tdLabel"><label>Remarks</label></td>
-		<td width="10px"></td>
-		<td rowspan="3"><textarea rows="2" cols="27" id="txtRemarks">${remarks}</textarea></td>
-	</tr>
-	<tr>
-		<td class="tdLabel"><label>Obsolete Tag</label></td>
-		<td width="10px"></td>
-		<td><input type="radio" name="obsolete" id="isObsolete" value="Y"> YES
-		<input type="radio" name="obsolete" id="isNotObsolete" value="N"> NO
-	</tr>
-	<tr>
-		<td class="tdLabel"><label>Location</label></td>
-		<td width="10px"></td>
-		<td><input type="text" id="txtLocation" value="${location}" size="30px"></td>
-	</tr>
-	
-	<tr>
-<!-- 		<td><input type="button" id="btnExecute" name="btnAdd" value="${buttonVal}"></td> --%>
-<!-- 		<td><input type="button" id="btnCancel" value="Cancel"></td> -->
-<%-- 	</tr>
-	<tr>
-		<td><input type="text" id="txtHideObsolete" value="${obsolete}" style="display:none"></td>
-		<td><input type="text" id="txtHideSupTypeName" value="${supplyTypeName}" style="display:none"></td>
-		<td><input type="text" id="txtHideSupTypeID" value="${supplyTypeID}" style="display:none"></td>
-	</tr>
-</table>  --%>
-<br>
+<br><br>
 <div style="margin: auto; width: 20%;
     padding: 10px;"> 
     <input type="button" id="btnExecute" class="btn btn-default" name="btnAdd" value="${buttonVal}">
@@ -293,257 +230,254 @@
 
 <script>
 
-	var id = 0;
-	var currentRow = -1;
-	var rec = [];
-	var addObj = {};
-	
-	window.addEventListener ? 
-			window.addEventListener("load",initializeVals(),false) : 
-			window.attachEvent && window.attachEvent("onload",initializeVals());
-			
-	function initializeVals() {
-		if ($F('txtHideObsolete') == 'Y') {
-			$('isObsolete').checked = true;
-		}
-		else {
-			$('isNotObsolete').checked = true;
-		}
+var id = 0;
+var currentRow = -1;
+var rec = [];
+var addObj = {};
+
+window.addEventListener ? 
+		window.addEventListener("load",initializeVals(),false) : 
+		window.attachEvent && window.attachEvent("onload",initializeVals());
 		
-		if ($F('btnExecute') == 'Add') {
-			$('supplyIDRow').setAttribute("hidden", true);
-			
-		}
-		else {
-			$('txtSupplyID').setAttribute("disabled", false);
-			$('txtActualCount').setAttribute("disabled", false);
-			$('selSupplyTypeID').setAttribute("disabled", false);
-		}
-		
-		$('selSupplyTypeID').value = $F('txtHideSupTypeID');
+function initializeVals() {
+	if ($F('txtHideObsolete') == 'Y') {
+		$('isObsolete').checked = true;
 	}
-
-	$("btnExecute").observe("click", function() {
-		
-		if($F("btnExecute")=="Add") {
-			addRecord();
-		}
-		else if ($F("btnExecute")=="Update") {
-			updateRecord();
-		}
-	});
-	
-	$("myModalUpdateSuccessClose").observe("click", function() {
-		$("myModalUpdateSuccess").style.display = "none"; 
-		window.location.reload();
-		clearFields();
-		goToSuppliesListing();
-
-	});
-	$("myModalAddSuccessClose").observe("click", function() {
-		$("myModalAddSuccess").style.display = "none"; 
-		window.location.reload();
-		clearFields();
-		goToSuppliesListing();
-
-	});
-	$("myModalNullWarningClose").observe("click", function() {
-		$("myModalNullWarning").style.display = "none"; 
-	});
-	$("myModalNumericWarningClose").observe("click", function() {
-		$("myModalNumericWarning").style.display = "none"; 
-	});
-	window.onclick = function(event) {
-	    if (event.target == $("myModalUpdateSuccess")) {
-	    	$("myModalUpdateSuccess").style.display = "none";
-	    	window.location.reload();
-			clearFields();
-			goToSuppliesListing();
-	    	
-	    }
-	    else if (event.target == $("myModalAddSuccess")) {
-	    	$("myModalAddSuccess").style.display = "none";
-	    	window.location.reload();
-			clearFields();
-			goToSuppliesListing();
-	    }
-	    else if (event.target == $("myModalNullWarning")) {
-	    	$("myModalNullWarning").style.display = "none";
-
-	    }
-	    else if (event.target == $("myModalNumericWarning")) {
-	    	$("myModalNumericWarning").style.display = "none";
-
-	    }
-	    
-	} 
-	
-	$("btnCancel").observe("click", function() {
-		goToSuppliesListing();
-	});
-	
-	$("txtReorderLevel").observe("keyup", function() {
-		if(isNaN($F("txtReorderLevel"))){
-			$("txtReorderLevel").clear();
-			$("myModalNumericWarning").style.display="block";
-
-		}
-	});
-	
-	$("txtActualCount").observe("keyup", function() {
-		if(isNaN($F("txtActualCount"))){
-			$("txtActualCount").clear();
-			$("myModalNumericWarning").style.display="block";
-		}
-	});
-
-
-	function addRecord(){
-		
-		var isNull=false;
-		var obsolete;
-		var supplyTypeId = 0;
-		$w("selSupplyTypeID txtItemName txtItemUnit txtReorderLevel txtActualCount").each(function(c){
-			if ($F(c) == null || $F(c) == ""){
-				isNull = true;
-			}
-		})
-		
-		if ($F("txtLocation") == null || $F("txtLocation") == ""){
-			$F("txtLocation") == "";
-		}
-		
-		if ($F("txtRemarks") == null || $F("txtRemarks") == ""){
-			$F("txtRemarks") == "";
-		}
-		
-		if(isNull){
-			$("myModalNullWarning").style.display="block";
-			return false;
-		}
-		if ($('isObsolete').checked) {
-			  obsolete = $F('isObsolete');
-		}
-		else if ($('isNotObsolete').checked) {
-			  obsolete = $F('isNotObsolete');
-		}
-		var e = $("selSupplyTypeID");
-		var strTypeID = e.options[e.selectedIndex].value;
-		addObj.supplyTypeID = strTypeID;
-		addObj.itemName = $F("txtItemName");
-		addObj.itemUnit = $F("txtItemUnit");
-		addObj.obsoleteTag = obsolete;
-		addObj.location = $F("txtLocation");
-		addObj.reorderLevel = $F("txtReorderLevel");
-		addObj.actualCount = $F("txtActualCount");
-		addObj.remarks = $F("txtRemarks");
-		clearFields();
-		saveRecord();
+	else {
+		$('isNotObsolete').checked = true;
 	}
 	
-	function updateRecord(){
-		var obsolete;
-		var isNull = false;
-		$w("txtItemName txtItemUnit txtReorderLevel").each(function(c) {
-			if ($F(c) == null || $F(c) == "") {
-				isNull = true;
-			}
-		})
+	if ($F('btnExecute') == 'Add') {
+		$('supplyIDRow').setAttribute("hidden", true);
 		
-		if ($F("txtLocation") == null || $F("txtLocation") == ""){
-			$F("txtLocation") == "";
-		}
-		
-		if ($F("txtRemarks") == null || $F("txtRemarks") == ""){
-			$F("txtRemarks") == "";
-		}
+	}
+	else {
+		$('txtSupplyID').setAttribute("disabled", false);
+		$('txtActualCount').setAttribute("disabled", false);
+		$('selSupplyTypeID').setAttribute("disabled", false);
+	}
+	
+	$('selSupplyTypeID').value = $F('txtHideSupTypeID');
+}
 
-		if ($('isObsolete').checked) {
-			  obsolete = $F('isObsolete');
+$("btnExecute").observe("click", function() {
+	
+	if($F("btnExecute")=="Add") {
+		addRecord();
+	}
+	else if ($F("btnExecute")=="Update") {
+		updateRecord();
+	}
+});
+
+$("myModalUpdateSuccessClose").observe("click", function() {
+	$("myModalUpdateSuccess").style.display = "none"; 
+	window.location.reload();
+	clearFields();
+	goToSuppliesListing();
+
+});
+$("myModalAddSuccessClose").observe("click", function() {
+	$("myModalAddSuccess").style.display = "none"; 
+	window.location.reload();
+	clearFields();
+	goToSuppliesListing();
+
+});
+$("myModalNullWarningClose").observe("click", function() {
+	$("myModalNullWarning").style.display = "none"; 
+});
+$("myModalNumericWarningClose").observe("click", function() {
+	$("myModalNumericWarning").style.display = "none"; 
+});
+window.onclick = function(event) {
+    if (event.target == $("myModalUpdateSuccess")) {
+    	$("myModalUpdateSuccess").style.display = "none";
+    	window.location.reload();
+		clearFields();
+		goToSuppliesListing();
+    	
+    }
+    else if (event.target == $("myModalAddSuccess")) {
+    	$("myModalAddSuccess").style.display = "none";
+    	window.location.reload();
+		clearFields();
+		goToSuppliesListing();
+    }
+    else if (event.target == $("myModalNullWarning")) {
+    	$("myModalNullWarning").style.display = "none";
+
+    }
+    else if (event.target == $("myModalNumericWarning")) {
+    	$("myModalNumericWarning").style.display = "none";
+
+    }
+    
+} 
+
+$("btnCancel").observe("click", function() {
+	goToSuppliesListing();
+});
+
+$("txtReorderLevel").observe("keyup", function() {
+	if(isNaN($F("txtReorderLevel"))){
+		$("txtReorderLevel").clear();
+		$("myModalNumericWarning").style.display="block";
+
+	}
+});
+
+$("txtActualCount").observe("keyup", function() {
+	if(isNaN($F("txtActualCount"))){
+		$("txtActualCount").clear();
+		$("myModalNumericWarning").style.display="block";
+	}
+});
+
+
+function addRecord(){
+	
+	var isNull=false;
+	var obsolete;
+	var supplyTypeId = 0;
+	$w("selSupplyTypeID txtItemName txtItemUnit txtReorderLevel txtActualCount").each(function(c){
+		if ($F(c) == null || $F(c) == ""){
+			isNull = true;
 		}
-		else if ($('isNotObsolete').checked) {
-			  obsolete = $F('isNotObsolete');
+	})
+	
+	if ($F("txtLocation") == null || $F("txtLocation") == ""){
+		$F("txtLocation") == "";
+	}
+	
+	if ($F("txtRemarks") == null || $F("txtRemarks") == ""){
+		$F("txtRemarks") == "";
+	}
+	
+	if(isNull){
+		$("myModalNullWarning").style.display="block";
+		return false;
+	}
+	if ($('isObsolete').checked) {
+		  obsolete = $F('isObsolete');
+	}
+	else if ($('isNotObsolete').checked) {
+		  obsolete = $F('isNotObsolete');
+	}
+	var e = $("selSupplyTypeID");
+	var strTypeID = e.options[e.selectedIndex].value;
+	addObj.supplyTypeID = strTypeID;
+	addObj.itemName = $F("txtItemName");
+	addObj.itemUnit = $F("txtItemUnit");
+	addObj.obsoleteTag = obsolete;
+	addObj.location = $F("txtLocation");
+	addObj.reorderLevel = $F("txtReorderLevel");
+	addObj.actualCount = $F("txtActualCount");
+	addObj.remarks = $F("txtRemarks");
+	clearFields();
+	saveRecord();
+}
+
+function updateRecord(){
+	var obsolete;
+	var isNull = false;
+	$w("txtItemName txtItemUnit txtReorderLevel").each(function(c) {
+		if ($F(c) == null || $F(c) == "") {
+			isNull = true;
 		}
-		var e = $("selSupplyTypeID");
-		var strTypeID = e.options[e.selectedIndex].value;
-		var strTypeName = e.options[e.selectedIndex].text;
-		if(isNull){
-			$("myModalNullWarning").style.display="block";
-		} else {
-			new Ajax.Request(contextPath + "/updatesupplies", {
-				method: "POST",
-				parameters: {
-					action: "updateRecord",
-					supplyID: $F("txtSupplyID"),
-					itemName: $F("txtItemName"),
-					itemUnit: $F("txtItemUnit"),
-					obsoleteTag: obsolete,
-					location: $F("txtLocation"),
-					reorderLevel: $F("txtReorderLevel"),
-					remarks: $F("txtRemarks"),
-				},
-				onComplete: function(response){
-					$("myModalUpdateSuccess").style.display = "block";
+	})
+	
+	if ($F("txtLocation") == null || $F("txtLocation") == ""){
+		$F("txtLocation") == "";
+	}
+	
+	if ($F("txtRemarks") == null || $F("txtRemarks") == ""){
+		$F("txtRemarks") == "";
+	}
+
+	if ($('isObsolete').checked) {
+		  obsolete = $F('isObsolete');
+	}
+	else if ($('isNotObsolete').checked) {
+		  obsolete = $F('isNotObsolete');
+	}
+	var e = $("selSupplyTypeID");
+	var strTypeID = e.options[e.selectedIndex].value;
+	var strTypeName = e.options[e.selectedIndex].text;
+	if(isNull){
+		$("myModalNullWarning").style.display="block";
+	} else {
+		new Ajax.Request(contextPath + "/updatesupplies", {
+			method: "POST",
+			parameters: {
+				action: "updateRecord",
+				supplyID: $F("txtSupplyID"),
+				itemName: $F("txtItemName"),
+				itemUnit: $F("txtItemUnit"),
+				obsoleteTag: obsolete,
+				location: $F("txtLocation"),
+				reorderLevel: $F("txtReorderLevel"),
+				remarks: $F("txtRemarks"),
+			},
+			onComplete: function(response){
+				$("myModalUpdateSuccess").style.display = "block";
+				
 					
- 					
-				}
-			});
+			}
+		});
+	}
+	
+}
+
+function clearFields() {
+	$("txtItemName").value = "";
+	$("txtItemUnit").value = "";
+	$("txtLocation").value = "";
+	$("txtReorderLevel").value = "";
+	$("txtActualCount").value = "";
+	$("txtRemarks").value = "";
+}
+
+function saveRecord() {
+	new Ajax.Request(contextPath + "/addsupplies", {
+		method : "POST",
+		parameters : {
+			action : "insertRecord",
+			supplyTypeID : addObj.supplyTypeID,
+			itemName : addObj.itemName,
+			itemUnit : addObj.itemUnit,
+			obsoleteTag : addObj.obsoleteTag,
+			location : addObj.location,
+			reorderLevel : addObj.reorderLevel,
+			actualCount : addObj.actualCount,
+			remarks : addObj.remarks
+		},
+		onComplete : function(response) {
+			$("myModalAddSuccess").style.display = "block";
+			
 		}
-		
-	}
+	});
+}
 
-	function clearFields() {
-		$("txtItemName").value = "";
-		$("txtItemUnit").value = "";
-		$("txtLocation").value = "";
-		$("txtReorderLevel").value = "";
-		$("txtActualCount").value = "";
-		$("txtRemarks").value = "";
-	}
-
-	function saveRecord() {
-		var user = session.getAttribute("user") == null? "wat": (String) session.getAttribute("user");
-		new Ajax.Request(contextPath + "/addsupplies", {
-			method : "POST",
-			parameters : {
-				action : "insertRecord",
-				supplyTypeID : addObj.supplyTypeID,
-				itemName : addObj.itemName,
-				itemUnit : addObj.itemUnit,
-				obsoleteTag : addObj.obsoleteTag,
-				location : addObj.location,
-				reorderLevel : addObj.reorderLevel,
-				actualCount : addObj.actualCount,
-				remarks : addObj.remarks,
-				lastUser : user
-				
-			},
-			onComplete : function(response) {
-				$("myModalAddSuccess").style.display = "block";
-				
-			}
-		});
-	}
-
-	function goToSuppliesListing() {
-		new Ajax.Request(contextPath + "/supplylistings", {
-			method : "GET",
-			parameters : {
-				page : "pages/SuppliesListing.jsp",
-				supplyID: "",
-				itemName : "",
-				itemUnit : "",
-				location : "",
-				reorderLevel : "",
-				actualCount : "",
-				remarks : "",
-				dateAdded: ""
-			},
-			onComplete: function(response) {
-				
-				$("mainContents").update(response.responseText);
-			}
-		});
-	}
+function goToSuppliesListing() {
+	new Ajax.Request(contextPath + "/supplylistings", {
+		method : "GET",
+		parameters : {
+			page : "pages/SuppliesListing.jsp",
+			supplyID: "",
+			itemName : "",
+			itemUnit : "",
+			location : "",
+			reorderLevel : "",
+			actualCount : "",
+			remarks : "",
+			dateAdded: ""
+		},
+		onComplete: function(response) {
+			
+			$("mainContents").update(response.responseText);
+		}
+	});
+}
 </script>
 </html>

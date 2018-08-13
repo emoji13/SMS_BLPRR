@@ -60,7 +60,7 @@
 		UPDATE supplies_blprr
 		SET item_name = #itemName#, item_unit = #itemUnit#, obsolete_tag = #obsoleteTag#, 
 			location = #location#, reorder_level = #reorderLevel#, remarks = #remarks#,
-			last_update = SYSDATE
+			last_user = #lastUser#, last_update = SYSDATE
 		WHERE supply_id = #supplyID#
 	</insert>
 </sqlMap>

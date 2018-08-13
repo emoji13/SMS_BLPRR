@@ -44,6 +44,7 @@ public class LoginServiceImpl implements LoginService {
 				session.setAttribute("user", user_name);
 				if(list.get(i).getPassword().equals(password)){
 					session.setAttribute("loginStatus", "SUCCESS");
+					request.setAttribute("user", user_name);
 					session.setAttribute("pass", password);
 					session.setAttribute("access",list.get(i).getAccessLevel());
 					session.setAttribute("tag", list.get(i).getActiveTag());

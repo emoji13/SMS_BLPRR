@@ -62,7 +62,7 @@ public class SupplyServiceImpl implements SupplyService{
 		params.put("actualCount", Integer.parseInt(request.getParameter("actualCount")));
 		params.put("remarks", request.getParameter("remarks"));
 		params.put("dateAdded", request.getParameter("dateAdded"));
-		params.put("lastUser", request.getParameter("lastUser"));
+		params.put("lastUser", (String) request.getSession().getAttribute("user"));
 		params.put("lastUpdate", request.getParameter("lastUpdate"));
 		
 		this.supplyDAO.insertSupply(params);
@@ -79,7 +79,8 @@ public class SupplyServiceImpl implements SupplyService{
 		params.put("location", request.getParameter("location"));
 		params.put("reorderLevel", (request.getParameter("reorderLevel")));
 		params.put("remarks", request.getParameter("remarks"));
-		
+		params.put("lastUser", (String) request.getSession().getAttribute("user"));
+		params.put("lastUpdate", request.getParameter("lastUpdate"));
 		this.supplyDAO.updateSupply(params);
 		
 	}

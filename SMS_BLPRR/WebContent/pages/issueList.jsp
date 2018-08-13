@@ -14,7 +14,9 @@
 	</tr>
 	</thead>
 	<tbody >
+	<c:set var="isEmpty" value="0"/>
 	<c:forEach items="${issuedSupplies}" var="issuedSupply">
+	<c:set var="isEmpty" value="1"/>
 	<tr id="${issuedSupply.issueId}" class="tr" >
 		<td style="cursor:pointer;"><c:out value="${issuedSupply.issueId}"/></td>
 		<td style="display:none;">
@@ -40,5 +42,9 @@
 		<td><fmt:formatDate value="${issuedSupply.lastUpdate}" pattern="MM/dd/yyyy"/></td>
 	</tr>
 	</c:forEach>
+	<c:if test="${isEmpty == 0}">
+		<tr style="text-align:center;"><td colspan="8">No Data Found.</td>
+		</tr>
+	</c:if>
 	</tbody>
 </table>
