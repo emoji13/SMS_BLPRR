@@ -29,8 +29,8 @@ public class IssuedSupplyController extends HttpServlet {
 		String page = "";
 		
 		try {
-			String user = (String) request.getSession().getAttribute("user") == null? "": (String) request.getSession().getAttribute("user");
-			if(!"".equals(user)){
+			String loginStatus = (String) request.getSession().getAttribute("loginStatus") == null? "": (String) request.getSession().getAttribute("loginStatus");
+			if(!"".equals(loginStatus)){
 				@SuppressWarnings("resource")
 				ApplicationContext appContext = 
 							new ClassPathXmlApplicationContext("/com/sms/resource/applicationContext.xml");
@@ -69,7 +69,6 @@ public class IssuedSupplyController extends HttpServlet {
 				issSuppService.updateIssuedSupply(request, response);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			LOGGER.error(e.getMessage());
 		} 
 	}

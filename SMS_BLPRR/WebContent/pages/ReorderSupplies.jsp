@@ -180,8 +180,7 @@
 									 <input type="text" id="addDateAdded" disabled style="cursor: default;"  class="form-control" required value="<fmt:formatDate value="${addStockNow}" pattern="dd/MM/yyyy"/>">
 									 <label>Purchase Date</label>
 									 <small><span class="glyphicon glyphicon glyphicon-asterisk" aria-hidden="true" style="color: red"></span></small>
-									 <input type="text" id="addPurchaseDate" class="form-control" required placeholder="dd/mm/yyyy" maxlength="10"> 
-									 <input type="hidden" id="addLastUpdateBy" value="SESSIONUSER"> 	
+									 <input type="text" id="addPurchaseDate" class="form-control" required placeholder="dd/mm/yyyy" maxlength="10"> 	
 									<br>
 									<div class="text-center">
 										<input type="button" class="btn btn-success" id="btnAddSave" value="Save" style="cursor: default" title="Add stock">
@@ -233,7 +232,6 @@
 									<label>Purchase Date</label>
 									<small><span class="glyphicon glyphicon glyphicon-asterisk" aria-hidden="true" style="color: red"></span></small> 
 									<input type="text" id="updatePurchaseDate" maxlength="10" class="form-control" required placeholder="dd/mm/yyyy">
-									 <input type="hidden" id="updateLastUpdateBy" value="SESSIONUSER">
 									<br>
 									<div class="text-center">
 										<input type="button" class="btn btn-success" id="btnUpdateSave" value="Save" style="cursor: default" title="Update stocks to supplies"> 
@@ -294,7 +292,6 @@
 			var referenceNumber = $F("addReferenceNumber");
 			var dateAdded = $F("addDateAdded");
 			var purchaseDate = $F("addPurchaseDate");
-			var lastUpdateBy = $F("addLastUpdateBy");
 			var lastUpdate = $F("addLastUpdated");		
 						
 			if (!(/^\d+$/.test(quantity))) {
@@ -328,7 +325,6 @@
 				addObj.referenceNumber = referenceNumber;
 				addObj.dateAdded = dateAdded;
 				addObj.purchaseDate = purchaseDate;
-				addObj.lastUpdateBy = lastUpdateBy;
 				addObj.lastUpdate = lastUpdate;
 
 				rec.push(addObj);
@@ -342,7 +338,6 @@
 							referenceNumber : addObj.referenceNumber,
 							dateAdded : addObj.dateAdded,
 							purchaseDate : addObj.purchaseDate,
-							lastUpdateBy : addObj.lastUpdateBy,
 							lastUpdate : addObj.lastUpdate
 							},
 							onComplete : function(response) {
@@ -366,8 +361,7 @@
 			var quantity = parseInt($F("updateQuantity"));
 			var referenceNumber = $F("updateReferenceNumber");
 			var dateAdded = $F("updateDateAdded");
-			var purchaseDate = $F("updatePurchaseDate");
-			var lastUpdateBy = $F("updateLastUpdateBy");
+			var purchaseDate = $F("updatePurchaseDate")
 			var lastUpdate = $F("updateLastUpdate");
 			var newQuantity = 0;
 			var updateQuantity = 0;
@@ -414,7 +408,6 @@
 					updtObj.referenceNumber = referenceNumber;
 					updtObj.dateAdded = dateAdded;
 					updtObj.purchaseDate = purchaseDate;
-					updtObj.lastUpdateBy = lastUpdateBy;
 					updtObj.lastUpdate = lastUpdate;
 
 					recUpdate.push(updtObj);
@@ -430,7 +423,6 @@
 								referenceNumber : updtObj.referenceNumber,
 								dateAdded : updtObj.dateAdded,
 								purchaseDate : updtObj.purchaseDate,
-								lastUpdateBy : updtObj.lastUpdateBy,
 								lastUpdate : updtObj.lastUpdate},
 								onComplete : function(response) {
 									modal.style.display = "block";

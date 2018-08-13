@@ -69,7 +69,7 @@ public class SupplyStockServiceImpl implements SupplyStockService {
 		params.put("purchaseDate", request.getParameter("purchaseDate"));
 		params.put("referenceNumber", request.getParameter("referenceNumber"));
 		params.put("quantity", Integer.parseInt(request.getParameter("quantity")));
-		params.put("lastUpdateBy", request.getParameter("lastUpdateBy"));
+		params.put("lastUpdateBy", (String) request.getSession().getAttribute("user"));
 		params.put("lastUpdate", request.getParameter("lastUpdate"));
 		
 		
@@ -107,7 +107,7 @@ public class SupplyStockServiceImpl implements SupplyStockService {
 		params.put("purchaseDate", request.getParameter("purchaseDate"));
 		params.put("referenceNumber", request.getParameter("referenceNumber"));
 		params.put("quantity", Integer.parseInt(request.getParameter("quantity")));
-		params.put("lastUpdateBy", request.getParameter("lastUpdateBy"));
+		params.put("lastUpdateBy", (String) request.getSession().getAttribute("user"));
 		params.put("lastUpdate", request.getParameter("lastUpdate"));
 		
 		this.supplyStockDAO.updateSupplyStock(params);;

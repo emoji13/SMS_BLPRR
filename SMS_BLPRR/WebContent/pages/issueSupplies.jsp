@@ -9,8 +9,7 @@
 <title>Supplies Issuance</title>
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/> 
 <link href="css/issueSupplyStyle.css" type="text/css" rel="stylesheet"/> 
-<script src="js/prototype.js"></script>
-<script>var contextPath = "${pageContext.request.contextPath}"</script>
+
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -77,6 +76,15 @@
 						<div class="col-md-2"></div>
 						<div class = "col-md-6">
 							<input type="date" name="bday" id="txtIssueDate" class="form-control input-group">
+							 <!-- <div class="form-group">
+						        <input type='text' class="form-control" id='datetimepicker4' />
+						        
+				            </div> -->
+							<!--  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js">
+							 	$(function () {
+				                    $('#datetimepicker4').datetimepicker();
+				                });
+					        </script> -->
 						</div>
 					</div>
 				</div>
@@ -133,6 +141,8 @@
 	</div>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
+<script src="js/prototype.js"></script>
+<script>var contextPath = "${pageContext.request.contextPath}"</script>
 <script src="js/issueSupplies.js"></script>
 <script>
 $("suppliesHeader").addClassName("active");
